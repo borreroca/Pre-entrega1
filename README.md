@@ -14,9 +14,13 @@ Primer pre-entrega
 
 El diseño actual del proyecto se enfoca en una tienda de productos electronicos.
 
-A traves de prompt se solicita el nombre del usuario que ingresa, el número de productos que desea comprar, se le pregunta si desea saber el promedio y luego se le da a escoger entre tres productos con sus respectivos valores.
+A traves de prompt se solicita el nombre del usuario que ingresa, se le ofrece un menu de opciones entre las que se encuentra comprar un producto, ver los productos en el carrito, ver el total del precio del producto del carrito o abandonar el menu.
 
-Al finalizar se le dice el valor total de su compra, y en caso de haber aceptado, se llama a la función "calcularPromedio" para que calcule y muestre su valor.
+Si el cliente desea comprar un producto, ademas de seleccionarlo se le permite ingresar que cantidad del producto desea adquirir.
+
+La respuesta que entrega el programa al cliente se muestra utilizando la funcion Alert.
+
+Adicionalmente hay un descuento del 10% si el cliente realiza la compra el dia lunes o miercoles, obtenemos el día apartir de la funcion DATE
 
 
 ## Used By
