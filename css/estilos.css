@@ -1,14 +1,6 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans);
 @import url("https://fonts.googleapis.com/css?family=Poppins:400");
-.mainAnime .seccionAnime .tituloAnime, .mainLibros .contenedorTexto .tituloLibro, .mainVideojuegos .contenedorTexto .tituloJuego {
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 1rem;
-  background-color: #f8f8f8;
-  padding: 1rem;
-  border-radius: 1rem;
-  font-weight: bold; }
 
 * {
   margin: 0;
@@ -17,22 +9,12 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(51deg, #500e0e, #221c22, #493342, #221046, #11144C);
-  background-size: 360% 360%;
-  animation: gradient-animation-body 30s ease infinite;
-  color: #cbcccf; }
-
-@keyframes gradient-animation-body {
-  0% {
-    background-position: 0% 50%; }
-  50% {
-    background-position: 100% 50%; }
-  100% {
-    background-position: 0% 50%; } }
+  background-color: whitesmoke;
+}
 
 header .navbar {
   padding: 0;
-  background-color: #f8f8f8;
+  background-color: rgb(84, 84, 186);
   border-bottom: solid black 1px; }
   header .navbar .container-nav {
     padding: 0; }
@@ -70,61 +52,55 @@ header .navbar {
     padding: 1rem;
     margin-top: 2rem;
     font-size: 2.5rem; }
-  .mainIndex .subtituloPrincipal {
-    padding: 1rem; }
-  .mainIndex p {
+  .mainIndex .mensajeBienvenida {
     padding: 0.4rem;
-    text-align: justify; }
+    text-align: justify; 
+    width: 80%;}
   .mainIndex img {
     width: 90%;
     margin: 1rem 0rem; }
-  .mainIndex .contenedorClick {
+
+  .mainIndex .contenedorProductos .listadoProductos{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center; }
-    .mainIndex .contenedorClick .clickAqui {
-      width: 40%;
-      margin: 0;
-      rotate: -20deg;
-      animation: animacion-click 3s infinite, animacion-filter 30s infinite; }
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    gap: 1rem;
+    padding: 2rem;
+    list-style: none;
+  }
 
-@keyframes animacion-click {
-  0% {
-    transform: scale(0.5); }
-  50% {
-    transform: scale(0.8); }
-  100% {
-    transform: scale(0.5); } }
+  .mainIndex .contenedorProductos .listadoProductos .producto .opcionesProducto{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
 
-@keyframes animacion-filter {
-  0% {
-    filter: invert(1); }
-  60% {
-    filter: invert(0); }
-  100% {
-    filter: invert(1); } }
-    .mainIndex .contenedorClick .subClick {
-      margin: 0rem 0rem 1rem 0rem;
-      padding: 0.5rem;
-      border: solid black 1px;
-      margin-left: 1rem;
-      border: solid 2px red;
-      border-radius: 30px;
-      color: #f8f8f8;
-      animation-name: animacion-box;
-      animation-iteration-count: infinite;
-      animation-duration: 2s; }
+  .mainIndex .infoCarro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0rem 2rem; 
+    list-style: none;}
 
-@keyframes animacion-box {
-  0% {
-    box-shadow: inset 0 0 5px red, 0 0 5px red; }
-  50% {
-    box-shadow: inset 0 0 20px red, 0 0 30px red; }
-  100% {
-    box-shadow: inset 0 0 5px red, 0 0 5px red; } }
+  .mainIndex .comprar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0rem 2rem; 
+    list-style: none;}
 
-.pagesContainer {
+/* .pagesContainer {
   display: flex; }
   .pagesContainer .linkPages {
     text-decoration: none;
@@ -157,7 +133,7 @@ header .navbar {
       .pagesContainer .linkPages:hover .cardLink .borde .iconLink {
         filter: invert(0.8);
         transition: all 0.85s ease-in-out;
-        transform: rotateY(360deg); }
+        transform: rotateY(360deg); } */
 
 footer {
   background-color: #f8f8f8;
@@ -201,7 +177,11 @@ footer {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    grid-template-areas: "h1 h1" "subtituloUno subtituloUno" "textoUno imgParrafo1" "subtituloDos subtituloDos" "textoDos imgParrafo2" "contenedorClick contenedorClick";
+    grid-template-areas: "h1 h1"
+ "mensajeBienvenida mensajeBienvenida"
+ "infoCompra contenedorProductos"
+ "comprar comprar"
+ "footer footer";
     justify-content: center;
     justify-items: center; }
     .mainIndex div {
@@ -215,643 +195,13 @@ footer {
     .mainIndex .tituloPagina {
       grid-area: h1;
       font-size: 3.2rem; }
-    .mainIndex .subtituloUno {
-      grid-area: subtituloUno; }
-    .mainIndex .imgParrafo1 {
-      grid-area: imgParrafo1; }
-    .mainIndex .textoUno {
-      grid-area: textoUno;
-      width: 70%;
-      font-size: 18px; }
-    .mainIndex .subtituloDos {
-      grid-area: subtituloDos; }
-    .mainIndex .textoDos {
-      grid-area: textoDos;
-      width: 70%;
-      font-size: 18px; }
-    .mainIndex .imgParrafo2 {
-      grid-area: imgParrafo2; }
-    .mainIndex .contenedorClick {
-      grid-area: contenedorClick;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center; }
-      .mainIndex .contenedorClick .clickAqui {
-        width: 20%; }
-      .mainIndex .contenedorClick .subClick {
-        width: 50%; }
-  .pagesContainer .linkPages .cardLink p {
-    display: block;
-    width: 90%; }
-  .pagesContainer .linkPages .cardLink .borde {
-    width: 25%;
-    align-items: center;
-    border-radius: 50%;
-    border: #766b6b solid 0.2rem;
-    margin-top: 1rem;
-    background-color: #e68080; } }
+    .mainIndex .mensajeBienvenida {
+      grid-area: mensajeBienvenida; }
+      .mainIndex .comprar {
+        grid-area: comprar; }
+    .mainIndex .contenedorProductos {
+      grid-area: contenedorProductos; }
+    .mainIndex .infoCompra {
+      grid-area: infoCompra; }
 
-.mainAnime .seccionAnime .tituloAnime, .mainLibros .contenedorTexto .tituloLibro, .mainVideojuegos .contenedorTexto .tituloJuego {
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 1rem;
-  background-color: #f8f8f8;
-  padding: 1rem;
-  border-radius: 1rem;
-  font-weight: bold; }
-
-.mainContacto {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0rem 2rem; }
-  .mainContacto p {
-    padding: 0.4rem; }
-  .mainContacto .tituloPagina {
-    padding: 1rem;
-    margin-top: 2rem;
-    font-size: 2.5rem; }
-  .mainContacto .subForm {
-    width: 80%;
-    font-size: 1.2rem;
-    margin-bottom: 0;
-    padding: 0.4rem;
-    text-align: justify;
-    padding: 0.4rem; }
-  .mainContacto .mapIframe {
-    width: 90%;
-    max-width: 400px;
-    margin-bottom: 1rem;
-    border-radius: 1rem; }
-  .mainContacto .contact_form {
-    margin: 1rem auto;
-    border-radius: 1rem;
-    padding-top: 1.6rem;
-    padding-bottom: 1.4rem;
-    background-color: #f8f8f8; }
-    .mainContacto .contact_form .containerForm {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center; }
-      .mainContacto .contact_form .containerForm .tituloForm {
-        width: 80%;
-        font-size: 39px;
-        text-align: center;
-        padding-bottom: 20px;
-        color: #ab4493; }
-      .mainContacto .contact_form .containerForm .mainForm .textForm {
-        font-size: 14px;
-        color: #0e0e0e;
-        text-align: justify; }
-        .mainContacto .contact_form .containerForm .mainForm .textForm .inputForm {
-          background-color: #fbfbfb;
-          width: 100%;
-          height: 2.5rem;
-          border-radius: 1rem;
-          border: solid 1px #ab4493;
-          margin-top: 0.6rem;
-          padding-left: 1rem;
-          margin-bottom: 1rem; }
-        .mainContacto .contact_form .containerForm .mainForm .textForm .texto_mensaje {
-          background-color: #fbfbfb;
-          width: 100%;
-          height: 250px;
-          border-radius: 1rem;
-          border: solid 1px #ab4493;
-          padding-left: 10px;
-          padding-top: 15px; }
-        .mainContacto .contact_form .containerForm .mainForm .textForm input:focus, .mainContacto .contact_form .containerForm .mainForm .textForm textarea:focus {
-          outline: 0;
-          border: 1px solid #97d848; }
-      .mainContacto .contact_form .containerForm .mainForm .buttonForm {
-        height: 45px;
-        text-transform: uppercase;
-        background-color: #ab4493;
-        border-color: #ab4493;
-        border-style: solid;
-        border-radius: 1rem;
-        width: 70%;
-        cursor: pointer; }
-        .mainContacto .contact_form .containerForm .mainForm .buttonForm .textButton {
-          text-align: center;
-          margin: 0px; }
-      .mainContacto .contact_form .containerForm .mainForm .aviso {
-        text-align: center;
-        margin-top: 0.4rem;
-        font-size: 13px;
-        color: #0e0e0e; }
-  .mainContacto .linkSocialNet {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center; }
-    .mainContacto .linkSocialNet .containerNetworks {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      font-size: 2rem; }
-      .mainContacto .linkSocialNet .containerNetworks a {
-        margin: 0rem 0rem 2rem 0rem;
-        text-decoration: none;
-        width: 60px;
-        height: 60px;
-        line-height: 60px;
-        background-color: #f8f8f8;
-        color: #262626;
-        border: solid black 1px;
-        border-radius: 50%;
-        box-shadow: 2px 2px 2px black;
-        transition: all .4s ease-in-out; }
-      .mainContacto .linkSocialNet .containerNetworks a:hover {
-        transform: scale(1.2); }
-      .mainContacto .linkSocialNet .containerNetworks .linkFace:hover {
-        background-color: #3b5999;
-        color: #f8f8f8;
-        border-color: #f8f8f8; }
-      .mainContacto .linkSocialNet .containerNetworks .linkTwt:hover {
-        background-color: #55acee;
-        color: #f8f8f8;
-        border-color: #f8f8f8; }
-      .mainContacto .linkSocialNet .containerNetworks .linkYout:hover {
-        background-color: #c4302b;
-        color: #f8f8f8;
-        border-color: #f8f8f8; }
-      .mainContacto .linkSocialNet .containerNetworks .linkLinke:hover {
-        background-color: #0077b5;
-        color: #f8f8f8;
-        border-color: #f8f8f8; }
-
-@media screen and (min-width: 600px) {
-  .mainContacto .tituloPagina {
-    font-size: 3rem; }
-  .mainContacto .subtituloPrincipal {
-    padding: 2rem; }
-  .mainContacto .mapIframe {
-    width: 90%;
-    min-height: 400px;
-    max-width: 600px;
-    margin-bottom: 2rem;
-    border-radius: 1rem; }
-  .mainContacto .linkSocialNet {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center; }
-    .mainContacto .linkSocialNet .containerNetworks {
-      gap: 2rem;
-      font-size: 2.5rem; }
-      .mainContacto .linkSocialNet .containerNetworks a {
-        width: 70px;
-        height: 70px;
-        line-height: 70px; } }
-
-@media screen and (min-width: 992px) {
-  .mainContacto {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: "tituloPagina  tituloPagina" "subForm subForm" "contact_form linkSocialNet" "subtituloPrincipal subtituloPrincipal " "mapIframe mapIframe ";
-    justify-content: center;
-    justify-items: center; }
-    .mainContacto .tituloPagina {
-      grid-area: tituloPagina;
-      font-size: 3.2rem; }
-    .mainContacto .subForm {
-      grid-area: subForm; }
-    .mainContacto .contact_form {
-      grid-area: contact_form; }
-    .mainContacto .linkSocialNet {
-      grid-area: linkSocialNet; }
-    .mainContacto .subtituloPrincipal {
-      grid-area: subtituloPrincipal; }
-    .mainContacto .mapIframe {
-      grid-area: mapIframe; }
-    .mainContacto .linkSocialNet .containerNetworks {
-      flex-wrap: wrap; }
-    .mainContacto .subForm {
-      width: 50%; }
-    .mainContacto .contact_form {
-      width: 80%;
-      max-width: 700px;
-      margin: 3rem auto 1rem;
-      padding-top: 2rem;
-      padding-bottom: 1.4rem; }
-      .mainContacto .contact_form .containerForm .tituloForm {
-        font-size: 45px; }
-      .mainContacto .contact_form .containerForm .mainForm .textForm {
-        font-size: 20px; }
-        .mainContacto .contact_form .containerForm .mainForm .textForm .inputForm {
-          height: 3.5rem; }
-      .mainContacto .contact_form .containerForm .mainForm .buttonForm {
-        height: 5rem; }
-        .mainContacto .contact_form .containerForm .mainForm .buttonForm .textButton {
-          text-align: center;
-          margin: 1rem; }
-      .mainContacto .contact_form .containerForm .mainForm .aviso {
-        text-align: center;
-        font-size: 1rem;
-        color: #0e0e0e; } }
-
-.mainAnime .seccionAnime .tituloAnime, .mainLibros .contenedorTexto .tituloLibro, .mainVideojuegos .contenedorTexto .tituloJuego {
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 1rem;
-  background-color: #f8f8f8;
-  padding: 1rem;
-  border-radius: 1rem;
-  font-weight: bold; }
-
-.mainAnime {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0rem 2rem; }
-  .mainAnime .tituloPagina {
-    font-size: 2.5rem;
-    padding: 1rem;
-    margin-top: 2rem; }
-  .mainAnime .parrafoCita {
-    width: 90%; }
-  .mainAnime .descripciónCategoria {
-    text-align: justify;
-    font-size: 1.2rem; }
-  .mainAnime .seccionAnime {
-    border: solid #a79f9f 3px;
-    padding: 1.5rem 1rem;
-    margin: 1rem 0rem; }
-    .mainAnime .seccionAnime .tituloAnime {
-      margin: 1rem; }
-    .mainAnime .seccionAnime .animeUno {
-      color: #175917; }
-    .mainAnime .seccionAnime .animeDos {
-      color: #1d1d77; }
-    .mainAnime .seccionAnime .animeTres {
-      color: #6b2121; }
-    .mainAnime .seccionAnime .animeCuatro {
-      color: #8c9241; }
-    .mainAnime .seccionAnime .contenedorInfo {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: justify; }
-      .mainAnime .seccionAnime .contenedorInfo .parrafoInfo {
-        width: 85%; }
-    .mainAnime .seccionAnime .imgAnime {
-      margin: 1rem;
-      width: 80%;
-      border-radius: 1rem;
-      border: 1px black solid; }
-
-@media screen and (min-width: 600px) {
-  .mainAnime .tituloPagina {
-    font-size: 3rem; }
-  .mainAnime .parrafoCita {
-    font-size: 1.3rem; }
-  .mainAnime .tituloPagina {
-    padding: 1rem;
-    margin-top: 2rem;
-    font-size: 3rem; }
-  .mainAnime .descripciónCategoria {
-    font-size: 1.4rem;
-    margin: 1rem 0rem; }
-  .mainAnime .seccionAnime .tituloAnime {
-    font-size: 2rem; }
-  .mainAnime .seccionAnime .contenedorInfo .fechaEstreno {
-    font-size: 1.5rem; } }
-
-@media screen and (min-width: 992px) {
-  .mainAnime {
-    width: 100%;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    gap: 1rem;
-    grid-template-areas: "tituloPagina tituloPagina" "parrafoCita parrafoCita" "descripciónCategoria descripciónCategoria" "seccionUno seccionDos" "seccionTres seccionCuatro";
-    justify-content: center;
-    justify-items: center; }
-    .mainAnime .tituloPagina {
-      grid-area: tituloPagina;
-      font-size: 3.2rem; }
-    .mainAnime .parrafoCita {
-      grid-area: parrafoCita;
-      width: 70%; }
-    .mainAnime .descripciónCategoria {
-      grid-area: descripciónCategoria;
-      width: 75%; }
-    .mainAnime .seccionUno {
-      grid-area: seccionUno; }
-    .mainAnime .seccionDos {
-      grid-area: seccionDos; }
-    .mainAnime .seccionTres {
-      grid-area: seccionTres; }
-    .mainAnime .seccionCuatro {
-      grid-area: seccionCuatro; }
-    .mainAnime .seccionAnime {
-      height: 42rem;
-      margin: 0.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center; }
-      .mainAnime .seccionAnime .tituloAnime {
-        font-size: 2rem; }
-      .mainAnime .seccionAnime .contenedorInfo .fechaEstreno {
-        font-size: 1.5rem; }
-  .pagesContainer {
-    margin-top: 1rem; } }
-
-.mainAnime .seccionAnime .tituloAnime, .mainLibros .contenedorTexto .tituloLibro, .mainVideojuegos .contenedorTexto .tituloJuego {
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 1rem;
-  background-color: #f8f8f8;
-  padding: 1rem;
-  border-radius: 1rem;
-  font-weight: bold; }
-
-.mainLibros {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0rem 2rem; }
-  .mainLibros .tituloPagina {
-    font-size: 2.5rem;
-    padding: 1rem;
-    margin-top: 2rem; }
-  .mainLibros .parrafoCita {
-    width: 90%;
-    font-size: 1rem; }
-    .mainLibros .parrafoCita .citaBajoTitulo {
-      font-style: italic; }
-  .mainLibros .subtituloCategoria {
-    padding: 1rem;
-    font-size: 2rem; }
-  .mainLibros .descripciónCategoria {
-    text-align: justify;
-    font-size: 1.2rem; }
-  .mainLibros .contenedorTexto {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: justify; }
-    .mainLibros .contenedorTexto .tituloUno {
-      color: #175917; }
-    .mainLibros .contenedorTexto .tituloDos {
-      color: #1d1d77; }
-    .mainLibros .contenedorTexto .tituloTres {
-      color: #6b2121; }
-    .mainLibros .contenedorTexto .autorLibro {
-      font-size: 1rem; }
-    .mainLibros .contenedorTexto .textoLibro {
-      font-size: 1.2rem; }
-      .mainLibros .contenedorTexto .textoLibro .citaLibro {
-        font-style: italic; }
-    .mainLibros .contenedorTexto .imgLibro {
-      border-radius: 1rem;
-      border: solid 1px #f8f8f8;
-      margin: 1rem; }
-  .mainLibros .lineaSeparadora {
-    width: 100%;
-    height: 0.1rem;
-    background: linear-gradient(42deg, #f6910b, #b7b8c7, #2cdfd2, #1703e5);
-    background-size: 240% 240%;
-    animation: gradient-animation 4s ease infinite;
-    margin: 2rem 0rem; }
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%; }
-  50% {
-    background-position: 100% 50%; }
-  100% {
-    background-position: 0% 50%; } }
-
-.pagesContainer {
-  margin-top: 2rem; }
-
-@media screen and (min-width: 600px) {
-  .mainLibros .tituloPagina {
-    font-size: 3rem; }
-  .mainLibros .parrafoCita {
-    width: 70%;
-    font-size: 1.3rem; }
-  .mainLibros .subtituloCategoria {
-    font-size: 2.5rem; }
-  .mainLibros .descripciónCategoria {
-    width: 80%;
-    margin: 1rem 0rem; }
-  .mainLibros .contenedorTexto .tituloLibro {
-    font-size: 2rem; }
-  .mainLibros .contenedorTexto .autorLibro {
-    font-size: 1.3rem; }
-  .mainLibros .contenedorTexto .textoLibro {
-    font-size: 1.2rem; } }
-
-@media screen and (min-width: 992px) {
-  .mainLibros {
-    width: 100%;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas: "tituloPagina tituloPagina tituloPagina tituloPagina tituloPagina" "parrafoCita parrafoCita parrafoCita parrafoCita parrafoCita" "subtituloCategoria subtituloCategoria subtituloCategoria subtituloCategoria subtituloCategoria" "descripciónCategoria descripciónCategoria descripciónCategoria descripciónCategoria descripciónCategoria" "libroUno separadorUno libroDos separadorDos libroTres";
-    justify-content: center;
-    justify-items: center; }
-    .mainLibros .tituloPagina {
-      grid-area: tituloPagina;
-      font-size: 3.2rem; }
-    .mainLibros .parrafoCita {
-      grid-area: parrafoCita;
-      width: 70%; }
-    .mainLibros .subtituloCategoria {
-      grid-area: subtituloCategoria;
-      font-size: 2.5rem; }
-    .mainLibros .descripciónCategoria {
-      grid-area: descripciónCategoria;
-      width: 70%;
-      font-size: 1.5rem; }
-    .mainLibros .contenedorTexto .tituloLibro {
-      font-size: 1.8rem;
-      width: 100%; }
-    .mainLibros .contenedorTexto .autorLibro {
-      font-size: 1.3rem; }
-    .mainLibros .contenedorTexto .textoLibro {
-      width: 95%; }
-    .mainLibros .contenedorTexto .imgLibro {
-      width: 250px;
-      height: 380px; }
-    .mainLibros .libroUno {
-      grid-area: libroUno; }
-    .mainLibros .libroDos {
-      grid-area: libroDos; }
-    .mainLibros .libroTres {
-      grid-area: libroTres; }
-    .mainLibros .separadorUno {
-      grid-area: separadorUno; }
-    .mainLibros .separadorDos {
-      grid-area: separadorDos; }
-    .mainLibros .lineaSeparadora {
-      width: 0.1rem;
-      height: 100%;
-      margin: 1rem; } }
-
-.mainAnime .seccionAnime .tituloAnime, .mainLibros .contenedorTexto .tituloLibro, .mainVideojuegos .contenedorTexto .tituloJuego {
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 1rem;
-  background-color: #f8f8f8;
-  padding: 1rem;
-  border-radius: 1rem;
-  font-weight: bold; }
-
-.mainVideojuegos {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0rem 1rem; }
-  .mainVideojuegos .tituloPagina {
-    font-size: 2.5rem;
-    padding: 1rem;
-    margin-top: 2rem; }
-  .mainVideojuegos .parrafoCita {
-    width: 90%;
-    font-size: 1rem; }
-    .mainVideojuegos .parrafoCita .citaBajoTitulo {
-      font-style: italic; }
-  .mainVideojuegos .subtituloCategoria {
-    padding: 1rem;
-    font-size: 2rem; }
-  .mainVideojuegos .descripciónCategoria {
-    text-align: justify;
-    font-size: 1rem; }
-  .mainVideojuegos .contenedorTexto {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: justify; }
-    .mainVideojuegos .contenedorTexto .tituloUno {
-      color: #175917; }
-    .mainVideojuegos .contenedorTexto .tituloDos {
-      color: #1d1d77; }
-    .mainVideojuegos .contenedorTexto .tituloTres {
-      color: #6b2121; }
-    .mainVideojuegos .contenedorTexto .tituloCuatro {
-      color: #8c9241; }
-    .mainVideojuegos .contenedorTexto .fechaSalida {
-      font-size: 1rem; }
-    .mainVideojuegos .contenedorTexto .infoJuego {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center; }
-      .mainVideojuegos .contenedorTexto .infoJuego .imgJuego {
-        border-radius: 1rem;
-        border: solid 1px #f8f8f8;
-        margin: 1rem; }
-      .mainVideojuegos .contenedorTexto .infoJuego .descripciónJuego {
-        display: none; }
-  .mainVideojuegos .lineaSeparadora {
-    width: 100%;
-    height: 0.1rem;
-    background: linear-gradient(42deg, #f6910b, #b7b8c7, #2cdfd2, #1703e5);
-    background-size: 240% 240%;
-    animation: gradient-animation 4s ease infinite;
-    margin: 2rem 0rem; }
-
-@media screen and (min-width: 600px) {
-  .mainVideojuegos .tituloPagina {
-    font-size: 3rem; }
-  .mainVideojuegos .parrafoCita {
-    width: 80%;
-    font-size: 1.2rem; }
-  .mainVideojuegos .descripciónCategoria {
-    font-size: 1.2rem;
-    width: 80%;
-    margin-top: 1rem; }
-  .mainVideojuegos .subtituloCategoria {
-    font-size: 2.5rem; }
-  .mainVideojuegos .contenedorTexto .tituloJuego {
-    font-size: 2rem; }
-  .mainVideojuegos .contenedorTexto .fechaSalida {
-    font-size: 1.3rem; }
-  .mainVideojuegos .contenedorTexto .infoJuego {
-    flex-direction: row; }
-    .mainVideojuegos .contenedorTexto .infoJuego .imgJuego {
-      margin: 0rem 1rem; }
-    .mainVideojuegos .contenedorTexto .infoJuego .descripciónJuego {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: justify;
-      padding: 0.5rem;
-      margin: 0rem 1.5rem;
-      font-size: 1rem; } }
-
-@media screen and (min-width: 992px) {
-  .mainVideojuegos {
-    width: 100%;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas: "tituloPagina tituloPagina tituloPagina" "parrafoCita parrafoCita parrafoCita" "descripciónCategoria descripciónCategoria descripciónCategoria" "subtituloCategoria subtituloCategoria subtituloCategoria" "juegoUno separadorUno juegoDos" "separadorDos separadorDos separadorDos" "juegoTres separadorTres juegoCuatro";
-    justify-content: center;
-    justify-items: center; }
-    .mainVideojuegos .tituloPagina {
-      grid-area: tituloPagina;
-      font-size: 3.2rem; }
-    .mainVideojuegos .parrafoCita {
-      grid-area: parrafoCita;
-      width: 70%; }
-    .mainVideojuegos .descripciónCategoria {
-      grid-area: descripciónCategoria;
-      font-size: 1.4rem; }
-    .mainVideojuegos .subtituloCategoria {
-      grid-area: subtituloCategoria;
-      font-size: 2.5rem; }
-    .mainVideojuegos .juegoUno {
-      grid-area: juegoUno; }
-    .mainVideojuegos .juegoDos {
-      grid-area: juegoDos; }
-    .mainVideojuegos .juegoTres {
-      grid-area: juegoTres; }
-    .mainVideojuegos .juegoCuatro {
-      grid-area: juegoCuatro; }
-    .mainVideojuegos .separadorUno {
-      grid-area: separadorUno;
-      width: 0.1rem;
-      height: 100%;
-      margin: 1rem; }
-    .mainVideojuegos .separadorDos {
-      grid-area: separadorDos; }
-    .mainVideojuegos .separadorTres {
-      grid-area: separadorTres;
-      width: 0.1rem;
-      height: 100%;
-      margin: 1rem; }
-    .mainVideojuegos .contenedorTexto .tituloJuego {
-      font-size: 1.8rem; }
-    .mainVideojuegos .contenedorTexto .fechaSalida {
-      font-size: 1.3rem; }
-    .mainVideojuegos .contenedorTexto .infoJuego {
-      flex-direction: column; }
-      .mainVideojuegos .contenedorTexto .infoJuego .descripciónJuego {
-        width: 85%;
-        margin: 1rem 0rem; } }
+}

@@ -5,115 +5,129 @@ class Producto {
     this.ID = parseInt(ID);
     this.nombre = nombre;
     this.precio = parseFloat(precio);
-    this.descuento = this.esLunesOMiercoles() ? true : false;
+    // this.descuento = this.esLunesOMiercoles() ? true : false;
     this.cantidad = 0;
   }
 
   // Método para calcular el precio de un producto, aplicando descuento si corresponde
-  calcularDescuento() {
-    if (this.descuento) {
-      return this.precio * 0.9;
-    } else {
-      return this.precio;
-    }
-  }
+  // calcularDescuento() {
+  //   if (this.descuento) {
+  //     return this.precio * 0.9;
+  //   } else {
+  //     return this.precio;
+  //   }
+  // }
 
   // Método que indica si el día actual es lunes o miércoles
-  esLunesOMiercoles() {
-    const fecha = new Date();
-    const diaSemana = fecha.getDay();
-    return diaSemana === 1 || diaSemana === 3;
-  }
+  // esLunesOMiercoles() {
+  //   const fecha = new Date();
+  //   const diaSemana = fecha.getDay();
+  //   return diaSemana === 1 || diaSemana === 3;
+  // }
 }
 
-// Array en el que creamos los productos disponibles en la tienda
 const productos = [
   new Producto(1, "Televisor 45 Pulgadas", 250),
   new Producto(2, "Aire Acondicionado 9000btu", 350),
-  new Producto(3, "Abanico Samurai 3 velocidades", 50)
+  new Producto(3, "Abanico Samurai 3 velocidades", 50),
+  new Producto(4, "Computador Intel I7", 420)
 ];
 
-// Array que representa el carrito de compras del cliente
-const productosCarro = [];
+let productosCarro = JSON.parse(localStorage.getItem('productosCarro')) || [];
+let total = parseFloat(localStorage.getItem('totalCompra')) || 0;
 
-// Variable que almacena el total a pagar por los productos del cliente
-let total = 0;
+for (const producto of productos){
+  let contenedor = document.createElement("ol");
+  let padre = document.querySelector("li.listadoProductos")
+  contenedor.innerHTML = `<h3>${producto.ID}</h3>
+                          <p>${producto.nombre}</p>
+                          <b>precio: $ ${producto.precio}</b>
+                          <div class="opcionesProducto">
+                          <button class="agregarProducto" data-id="${producto.ID}">+</button>
+                          <button class="quitarProducto" data-id="${producto.ID}">-</button>
+                          </div>`;
+  contenedor.className="producto"
+  padre.appendChild(contenedor);
 
-// Mensaje de bienvenida, solicitando nombre del cliente
-const nombre = prompt(`Bienvenido/a a tu tienda favorita. Por favor introduce tu nombre:`);
-alert(`Hola ${nombre}. Recuerda que los días Lunes y Viernes tenemos 10% en todos los artículos.`);
-
-let eleccion = 0;
-
-do {
-  eleccion = prompt("¿Qué operación desea realizar? \n 1. Comprar un producto \n 2. Ver los productos en el carrito \n 3. Ver el precio total a pagar \n 4. Abandonar el menú");
-
-  switch (eleccion) {
-    case "1":
-      let mensaje = `¿Qué producto desea adquirir? \n`;
-
-      const productosList = productos.map((producto, index) => `${index + 1}. ${producto.nombre} - $ ${producto.precio}`);
-
-      mensaje += productosList.join("\n");
-
-      // Pedimos al usuario que seleccione un producto
-      const eleccion = prompt(mensaje);
-      const indiceProducto = parseInt(eleccion) - 1;
-
-    // Si el usuario ingresó una opción válida, agregamos el producto al carrito y actualizamos el total
-    if (!isNaN(indiceProducto) && productos[indiceProducto]) {
-      const producto = productos[indiceProducto];
-      let existeEnCarrito = false;
-      let cantidadProducto = parseInt(prompt(`¿Qué cantidad desea comprar del producto ${producto.nombre}?`));
-
-      // Verificamos que la cantidad ingresada sea un número
-      if (isNaN(cantidadProducto)) {
-        alert("La cantidad ingresada no es válida.");
-      }
-
-      for (let i = 0; i < productosCarro.length; i++) {
-        if (productosCarro[i].ID === producto.ID) {
-          productosCarro[i].cantidad += cantidadProducto; // Aumentamos la cantidad del producto en el carro
-          existeEnCarrito = true;
-          break;
-        }
-      }
-
-      // Si el producto no está en el carrito, lo agregamos
-      if (!existeEnCarrito) {
-        producto.cantidad += cantidadProducto;
-        productosCarro.push(producto);
-      }
-
-      // Actualizamos el total de la compra
-      total += producto.calcularDescuento() * cantidadProducto; // Calculamos el total a pagar
-      alert(`Has agregado ${cantidadProducto} unidades de ${producto.nombre} a tu carrito.`);
+  const btnAgregar = contenedor.querySelector('.agregarProducto');
+  btnAgregar.addEventListener('click', () => {
+    const id = btnAgregar.dataset.id;
+    const productoCarro = productos.find(p => p.ID === parseInt(id));
+    const productoExistente = productosCarro.find(p => p.ID === parseInt(id));
+    if (productoExistente) {
+      productoExistente.cantidad++;
     } else {
-      alert("La opción ingresada no es válida, escoge una opción valida del menú.");
+      productoCarro.cantidad = 1;
+      productosCarro.push(productoCarro);
     }
-      break;
-    case "2":
-      if (productosCarro.length === 0) {
-        alert("El carrito está vacío.");
+    total += productoCarro.precio;
+
+    localStorage.setItem('productosCarro', JSON.stringify(productosCarro));
+    localStorage.setItem('totalCompra', total);
+
+    const infoCarro = document.querySelector('.infoCarro');
+    let cantidadTotal = 0;
+    let productosEnCarro = '';
+    for (const producto of productosCarro) {
+      cantidadTotal += producto.cantidad;
+      productosEnCarro += `${producto.nombre}: ${producto.cantidad} unidades<br>`;
+    }
+    infoCarro.innerHTML = `Carrito de Compra: ${cantidadTotal} productos - Total: $ ${total}<br>${productosEnCarro}`;
+    const mensajeCompra = document.querySelector('.mensajeCompra');
+    mensajeCompra.innerHTML = '';
+  });
+
+  const btnQuitar = contenedor.querySelector('.quitarProducto');
+
+  btnQuitar.addEventListener('click', () => {
+    const id = btnQuitar.dataset.id;
+    const productoCarro = productos.find(p => p.ID === parseInt(id));
+    const productoExistente = productosCarro.find(p => p.ID === parseInt(id));
+    if (productoExistente) {
+      if (productoExistente.cantidad === 1) {
+        const index = productosCarro.indexOf(productoExistente);
+        productosCarro.splice(index, 1);
       } else {
-        // Si hay productos en el carrito, mostramos el nombre y la cantidad de cada uno
-        let mensaje = "Productos en el carrito: \n";
-        productosCarro.forEach((producto) => {
-          mensaje += `${producto.nombre} - Cantidad: ${producto.cantidad} \n`;
-        });
-        alert(mensaje);
+        productoExistente.cantidad--;
       }
-      break;
-    case "3":
-      alert(`El total a pagar es: $ ${total}`);
-      break;
-    case "4":
-      break;
+      total -= productoCarro.precio;
 
-    default:
-      console.log("La opción ingresada no es válida. Intenta escogiendo un número del menú.");
-  }
-} while (eleccion != "4");
+      localStorage.setItem('productosCarro', JSON.stringify(productosCarro));
+      localStorage.setItem('totalCompra', total);
 
-alert("Muchas gracias por visitarnos, el total de su compra es $" + total);
+      const infoCarro = document.querySelector('.infoCarro');
+      let cantidadTotal = 0;
+      let productosEnCarro = '';
+      for (const producto of productosCarro) {
+        cantidadTotal += producto.cantidad;
+        productosEnCarro += `${producto.nombre}: ${producto.cantidad} unidades<br>`;
+      }
+      infoCarro.innerHTML = `Carrito de Compra: ${cantidadTotal} productos - Total: $ ${total}<br>${productosEnCarro}`;
+      const mensajeCompra = document.querySelector('.mensajeCompra');
+      mensajeCompra.innerHTML = '';
+    }
+  });
 
+    const btnComprar = document.querySelector('.comprar');
+    btnComprar.addEventListener('click', () => {
+      productosCarro = [];
+      total = 0;
+      localStorage.removeItem('productosCarro');
+      localStorage.removeItem('totalCompra');
+      const infoCarro = document.querySelector('.infoCarro');
+      infoCarro.innerHTML = `Carrito de Compra: 0 productos - Total: $0`;
+      const mensajeCompra = document.querySelector('.mensajeCompra');
+      mensajeCompra.innerHTML = 'Muchas gracias por su compra!';
+  });
+}
+
+const infoCarro = document.querySelector('.infoCarro');
+let cantidadTotal = 0;
+let productosEnCarro = '';
+for (const producto of productosCarro) {
+  cantidadTotal += producto.cantidad;
+  productosEnCarro += `${producto.nombre}: ${producto.cantidad} unidades<br>`;
+}
+infoCarro.innerHTML = `Carrito de Compra: ${cantidadTotal} productos - Total: $ ${total}<br>${productosEnCarro}`;
+const mensajeCompra = document.querySelector('.mensajeCompra');
+mensajeCompra.innerHTML = '';

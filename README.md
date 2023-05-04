@@ -20,8 +20,5 @@ Si el cliente desea comprar un producto, ademas de seleccionarlo se le permite i
 
 La respuesta que entrega el programa al cliente se muestra utilizando la funcion Alert.
 
-Adicionalmente hay un descuento del 10% si el cliente realiza la compra el dia lunes o miercoles, obtenemos el día apartir de la funcion DATE
-
-
 ## Used By
 
