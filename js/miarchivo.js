@@ -1,29 +1,13 @@
 
-// Defino la clase Producto, que representa los productos disponibles en la tienda
+
 class Producto {
   constructor(ID, nombre, precio) {
     this.ID = parseInt(ID);
     this.nombre = nombre;
     this.precio = parseFloat(precio);
-    // this.descuento = this.esLunesOMiercoles() ? true : false;
     this.cantidad = 0;
   }
 
-  // Método para calcular el precio de un producto, aplicando descuento si corresponde
-  // calcularDescuento() {
-  //   if (this.descuento) {
-  //     return this.precio * 0.9;
-  //   } else {
-  //     return this.precio;
-  //   }
-  // }
-
-  // Método que indica si el día actual es lunes o miércoles
-  // esLunesOMiercoles() {
-  //   const fecha = new Date();
-  //   const diaSemana = fecha.getDay();
-  //   return diaSemana === 1 || diaSemana === 3;
-  // }
 }
 
 const productos = [

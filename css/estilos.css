@@ -100,41 +100,6 @@ header .navbar {
     padding: 0rem 2rem; 
     list-style: none;}
 
-/* .pagesContainer {
-  display: flex; }
-  .pagesContainer .linkPages {
-    text-decoration: none;
-    background-color: #171126; }
-    .pagesContainer .linkPages .cardLink {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: antiquewhite;
-      gap: 0.5rem;
-      transition: all 0.5s ease-in-out; }
-      .pagesContainer .linkPages .cardLink p, .pagesContainer .linkPages .cardLink h3 {
-        display: none; }
-      .pagesContainer .linkPages .cardLink .borde {
-        width: 65%;
-        align-items: center;
-        border-radius: 50%;
-        border: #766b6b solid 0.2rem;
-        margin: 1rem;
-        background-color: #e68080; }
-        .pagesContainer .linkPages .cardLink .borde .iconLink {
-          width: 100%;
-          padding: 0.7rem; }
-  .pagesContainer .linkPages:hover {
-    background-color: #e68080; }
-    .pagesContainer .linkPages:hover .cardLink .borde {
-      background-color: #171126; }
-      .pagesContainer .linkPages:hover .cardLink .borde .iconLink {
-        filter: invert(0.8);
-        transition: all 0.85s ease-in-out;
-        transform: rotateY(360deg); } */
-
 footer {
   background-color: #f8f8f8;
   text-align: center; }

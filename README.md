@@ -14,11 +14,11 @@ Primer pre-entrega
 
 El diseño actual del proyecto se enfoca en una tienda de productos electronicos.
 
-A traves de prompt se solicita el nombre del usuario que ingresa, se le ofrece un menu de opciones entre las que se encuentra comprar un producto, ver los productos en el carrito, ver el total del precio del producto del carrito o abandonar el menu.
+Al cliente se le presentan los 4 productos disponibles actualmente, numerados, junto a su nombre, precio y un boton para agregar o quitar los productos del carro de compra.
 
-Si el cliente desea comprar un producto, ademas de seleccionarlo se le permite ingresar que cantidad del producto desea adquirir.
+Cada vez que el cliente agregue o quite un producto del carro de compra, en el apartado del carrito que puede estar al lado izquierdo o abajo segun el tamaño de la pantalla, se irá actualizando, la cantidad total de productos en el carro, el precio total de la compra, y se listara los productos en el carroy  su cantidad individual.
 
-La respuesta que entrega el programa al cliente se muestra utilizando la funcion Alert.
+Si el cliente da click en el boton "comprar" el carrito se vaciara y aparecera un mensaje de "Muchas gracias por su compra". Este mensaje desaparecera si se interactua con los botones de agregar o quitar productos nuevamente.
 
 ## Used By
 
